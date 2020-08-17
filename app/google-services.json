@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "455609987803",
+    "firebase_url": "https://bookingroom-9e486.firebaseio.com",
+    "project_id": "bookingroom-9e486",
+    "storage_bucket": "bookingroom-9e486.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455609987803:android:2968d344ee92cf04bf12fe",
+        "android_client_info": {
+          "package_name": "com.example.booking_room"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "455609987803-5g5vbfeunsfee95mht7ieb4kmjhabpvn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5BaJeZiRP1Rja_NIHbjAaWF0wi8pTLvI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "455609987803-5g5vbfeunsfee95mht7ieb4kmjhabpvn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
