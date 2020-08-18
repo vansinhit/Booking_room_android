@@ -1,45 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ManagementFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/header">
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/airbnb_logo_3"
-            android:layout_marginLeft="10dp"
-            android:layout_gravity="center"/>
-
-        <EditText
-            android:id="@+id/et_register_email"
-            android:layout_width="280dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/search"
-            android:drawableRight="@drawable/ic_search"
-            android:drawablePadding="5dp"
-            android:hint="Sreach"
-            android:inputType="textEmailAddress"
-            android:paddingLeft="20dp"
-            android:paddingRight="15dp" />
-
+        android:layout_height="match_parent"
+        android:background="@color/colorPlatinum"
+        android:orientation="vertical">
         <LinearLayout
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="5dp"
-            android:layout_gravity="center">
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/header">
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_add"/>
-        </LinearLayout>
-    </LinearLayout>
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/airbnb_logo_3"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center"/>
 
+            <EditText
+                android:id="@+id/et_register_email"
+                android:layout_width="260dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/search"
+                android:drawableRight="@drawable/ic_search"
+                android:drawablePadding="5dp"
+                android:hint="Sreach"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="20dp"
+                android:paddingRight="15dp" />
+
+            <LinearLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center">
+                <ImageView
+                    android:id="@+id/add_room"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_add"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="60dp">
+
+        </ListView>
+
+    </LinearLayout>
 </FrameLayout>

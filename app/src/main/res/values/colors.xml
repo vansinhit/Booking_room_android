@@ -5,4 +5,7 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="colorTerraCotta">#E67565</color>
     <color name="colorAzalea">#FEBDBE</color>
+    <color name="colorPlatinum">#e0e4e7</color>
+    <color name="colorCoolBlack">#012569</color>
+    <color name="colorPastelRed">#f86565</color>
 </resources>

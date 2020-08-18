@@ -3,6 +3,7 @@ package com.example.booking_room
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.booking_room.fragments.BookingFragment
@@ -10,6 +11,7 @@ import com.example.booking_room.fragments.HomeFragment
 import com.example.booking_room.fragments.ManagementFragment
 import com.example.booking_room.services.AuthService
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
 
@@ -41,6 +43,7 @@ class HomeActivity : AppCompatActivity() {
 
         view.logout.setOnClickListener {
             bottomSheetDialog.hide()
+            bottomSheetDialog.dismiss()
             Toast.makeText(baseContext, "Log Out", Toast.LENGTH_LONG).show()
             AuthService.getInstance().signOut()
             startActivity(Intent(this, LoginActivity::class.java))
