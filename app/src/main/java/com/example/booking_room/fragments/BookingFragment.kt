@@ -1,11 +1,24 @@
 package com.example.booking_room.fragments
 
+import android.app.ProgressDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ListView
+import androidx.fragment.app.Fragment
 import com.example.booking_room.R
+import com.example.booking_room.adapters.RoomAdapter
+import com.example.booking_room.models.Room
+import com.example.booking_room.services.RoomService
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.concurrent.schedule
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +34,11 @@ class BookingFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var listView: ListView? = null
+    private lateinit var roomAdapter: RoomAdapter
+    private lateinit var arrayList: ArrayList<Room>
+    private lateinit var eventListener: ValueEventListener
+    private lateinit var databaseReference: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +53,62 @@ class BookingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_booking, container, false)
+        val v: View = inflater.inflate(R.layout.fragment_booking, container, false)
+
+        listView = v.findViewById(R.id.list_room_booking)
+        arrayList = ArrayList()
+        roomAdapter = RoomAdapter(
+            activity?.applicationContext!!,
+            arrayList,
+            R.layout.item_booking_layout,
+            requireActivity().supportFragmentManager
+        )
+        listView?.adapter = roomAdapter
+
+        setRoomData()
+
+        return v;
+    }
+
+    private fun setRoomData() {
+        val progress = ProgressDialog(requireContext())
+        progress.setTitle("Loading")
+        progress.setMessage("Wait while loading...")
+        progress.setCancelable(false)
+        progress.show()
+
+        eventListener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val children = snapshot.children
+                arrayList.clear()
+
+                children.forEach {
+                    val room = it.getValue(Room::class.java)
+                    if (room != null) {
+                        arrayList.add(room)
+                    }
+                }
+                roomAdapter.notifyDataSetChanged()
+
+                Timer("", false).schedule(500) {
+                    progress.dismiss()
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        }
+
+        databaseReference = RoomService.getInstance().getRoom()
+
+        databaseReference.addValueEventListener(eventListener)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        databaseReference.removeEventListener(eventListener)
     }
 
     companion object {

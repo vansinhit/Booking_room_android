@@ -7,12 +7,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.booking_room.services.AuthService
-import kotlin.math.log
 
 class RegisterActivity : AppCompatActivity() {
-    lateinit var etEmail: EditText
-    lateinit var etPass: EditText
-    lateinit var etRePass: EditText
+    private lateinit var etEmail: EditText
+    private lateinit var etPass: EditText
+    private lateinit var etRePass: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +26,8 @@ class RegisterActivity : AppCompatActivity() {
 
         btnBack.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+            finish()
         }
 
         btnSignUp.setOnClickListener {
@@ -47,7 +48,7 @@ class RegisterActivity : AppCompatActivity() {
             return
         }
 
-        if (!etPass.text.toString().trim().equals(etRePass.text.toString().trim())) {
+        if (etPass.text.toString().trim() != etRePass.text.toString().trim()) {
             etRePass.error = "Password not match"
             etRePass.requestFocus()
             return

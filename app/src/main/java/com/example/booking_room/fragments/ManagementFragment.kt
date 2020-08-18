@@ -1,6 +1,6 @@
 package com.example.booking_room.fragments
 
-import android.content.DialogInterface
+import android.app.ProgressDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,7 +17,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
+import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.concurrent.schedule
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -56,7 +58,7 @@ class ManagementFragment : Fragment() {
 
         listView = v.findViewById(R.id.list_view)
         arrayList = ArrayList()
-        roomAdapter = RoomAdapter(activity?.applicationContext!!, arrayList, requireActivity().supportFragmentManager)
+        roomAdapter = RoomAdapter(activity?.applicationContext!!, arrayList, R.layout.item_layout, requireActivity().supportFragmentManager)
         listView?.adapter = roomAdapter
 
         val btnAddRoom = v.findViewById<ImageView>(R.id.add_room)
@@ -73,6 +75,12 @@ class ManagementFragment : Fragment() {
     }
 
     private fun setRoomData() {
+        val progress = ProgressDialog(requireContext())
+        progress.setTitle("Loading")
+        progress.setMessage("Wait while loading...")
+        progress.setCancelable(false)
+        progress.show()
+
         eventListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val children = snapshot.children
@@ -85,6 +93,10 @@ class ManagementFragment : Fragment() {
                     }
                 }
                 roomAdapter.notifyDataSetChanged()
+
+                Timer("", false).schedule(500) {
+                    progress.dismiss()
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
