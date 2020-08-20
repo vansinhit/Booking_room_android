@@ -22,6 +22,7 @@ class BookingService private constructor() {
     }
 
     fun bookingRoom(booking: Booking): Task<Void> {
+        // TODO create QR
         return database.child("${booking.apartment}_${booking.roomName}_${booking.date}${booking.fromTime}${booking.toTime}").setValue(booking)
     }
 }
