@@ -131,7 +131,7 @@ class RoomEditorDialog : DialogFragment() {
 
         if (isEdit) {
             RoomService.getInstance().createRoom(room).addOnCompleteListener {
-                this@RoomEditorDialog.dismiss()
+                    this@RoomEditorDialog.dismiss()
             }
         } else {
             RoomService.getInstance().isExisted("${room.apartment}_${room.name}").addListenerForSingleValueEvent(object :

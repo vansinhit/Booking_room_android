@@ -1,11 +1,18 @@
 package com.example.booking_room.fragments
 
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.ImageView
+import android.widget.ViewFlipper
 import com.example.booking_room.R
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_home.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,8 +41,28 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val view :View = inflater.inflate(R.layout.fragment_home, container, false)
+        val vfliper: ViewFlipper = view.findViewById(R.id.vfliper)
+               val arrhinhanh: ArrayList<String> = ArrayList()
+        arrhinhanh.add("https://noithatduonggia.vn/wp-content/uploads/2018/05/thiet-ke-phong-hop-dep-1.jpg")
+        arrhinhanh.add("https://noithatduonggia.vn/wp-content/uploads/2018/05/thiet-ke-phong-hop-dep-6.jpg")
+        arrhinhanh.add("https://saigonnoithat.net/data/sgnt/img/upload/NoiThatVanPhong/thiet-ke-noi-that-phong-hop-dep-17.gif")
+        arrhinhanh.add("https://dplusvn.com/wp-content/uploads/2020/01/tam-quan-trong-cua-thiet-ke-phong-giam-doc.jpg")
+        for (i in arrhinhanh){
+            var imageview = ImageView(activity?.applicationContext!!)
+            Picasso.with(activity?.application)
+                .load(i).into(imageview)
+            imageview.scaleType = ImageView.ScaleType.FIT_XY
+            vfliper.addView(imageview)
+
+        }
+        vfliper.flipInterval = 5000
+        vfliper.isAutoStart = true
+        var inAnimation: Animation = AnimationUtils.loadAnimation(activity?.applicationContext!!,R.anim.slide_in_right)
+        var outAnimation: Animation = AnimationUtils.loadAnimation(activity?.applicationContext!!,R.anim.slide_out_right)
+        vfliper.inAnimation = inAnimation
+        vfliper.outAnimation = outAnimation
+        return view;
     }
 
     companion object {

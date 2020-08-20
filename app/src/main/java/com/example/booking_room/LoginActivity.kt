@@ -54,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
-        AuthService.getInstance().login(etEmail.text.toString(), etPass.text.toString()).addOnCompleteListener(this) { task ->
+        AuthService.getInstance().login(etEmail.text.toString(), etPass.text.toString()).addOnCompleteListener(this) { task -> //
             if (task.isSuccessful) {
                 goToHome()
             } else {

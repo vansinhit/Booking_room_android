@@ -5,15 +5,15 @@
     android:layout_height="match_parent"
     tools:context=".fragments.HomeFragment">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:layout_centerInParent="true"
-            android:text="Home Fragment" />
-    </RelativeLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <ViewFlipper
+            android:id="@+id/vfliper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
 
 </FrameLayout>

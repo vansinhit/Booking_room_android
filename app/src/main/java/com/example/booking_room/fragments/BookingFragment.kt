@@ -63,7 +63,7 @@ class BookingFragment : Fragment() {
             R.layout.item_booking_layout,
             requireActivity().supportFragmentManager
         )
-        listView?.adapter = roomAdapter
+         listView?.adapter = roomAdapter
 
         setRoomData()
 
@@ -71,7 +71,7 @@ class BookingFragment : Fragment() {
     }
 
     private fun setRoomData() {
-        val progress = ProgressDialog(requireContext())
+        val progress =   ProgressDialog(requireContext())
         progress.setTitle("Loading")
         progress.setMessage("Wait while loading...")
         progress.setCancelable(false)

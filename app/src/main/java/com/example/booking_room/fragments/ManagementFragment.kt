@@ -63,15 +63,15 @@ class ManagementFragment : Fragment() {
 
         val btnAddRoom = v.findViewById<ImageView>(R.id.add_room)
 
-        btnAddRoom.setOnClickListener {
-            val dialog = RoomEditorDialog()
+                btnAddRoom.setOnClickListener {
+                val dialog = RoomEditorDialog()
 
             dialog.show(requireActivity().supportFragmentManager, "")
         }
 
         setRoomData()
 
-        return v;
+        return v
     }
 
     private fun setRoomData() {
