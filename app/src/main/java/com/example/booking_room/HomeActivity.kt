@@ -54,7 +54,7 @@ class HomeActivity : AppCompatActivity() {
         }
         view.change_pasword.setOnClickListener{
             startActivity(Intent(this, ChagePassword::class.java))
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             finish()
         }
 
