@@ -32,6 +32,31 @@
             android:textColor="@color/colorAzalea"
             android:layout_marginLeft="16dp" />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:id="@+id/change_pasword"
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:gravity="center_vertical"
+        android:background="?attr/selectableItemBackground">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_key" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chage Password"
+            android:textSize="16dp"
+            android:textColor="@color/colorAzalea"
+            android:layout_marginLeft="16dp" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
