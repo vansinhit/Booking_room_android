@@ -37,6 +37,9 @@ public class AuthService private constructor() {
     fun signOut() {
         auth.signOut()
     }
+    fun ResetPassword(username : String): Task<Void> {
+        return auth.sendPasswordResetEmail(username)
+    }
 
 
 }
