@@ -14,7 +14,7 @@ import com.example.booking_room.dialog.RoomEditorDialog
 import com.example.booking_room.models.Room
 import com.example.booking_room.services.RoomService
 
-class RoomAdapter(var context: Context, var arrayList: ArrayList<Room>, var layoutResource: Int, var fragmentManager: FragmentManager) : BaseAdapter() {
+class RoomAdapter(var context: Context, var arrayList: ArrayList<Room>, var layoutResource: Int, var fragmentManager: FragmentManager) : BaseAdapter()  {
     override fun getCount(): Int {
         return arrayList.size
     }

@@ -57,7 +57,6 @@ class ChagePassword : AppCompatActivity() {
             return
         }
             val user = AuthService.getInstance().getCurrentUser()
-
                 val credential = EmailAuthProvider.getCredential(user?.email!!, et_pass_old.text.toString())
                 user?.reauthenticate(credential).addOnCompleteListener {task ->
                         if (task.isSuccessful) { user?.updatePassword(etNewPassword.text.toString()).addOnCompleteListener{ task ->
