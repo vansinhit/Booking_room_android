@@ -25,4 +25,7 @@ class BookingService private constructor() {
         // TODO create QR
         return database.child("${booking.apartment}_${booking.roomName}_${booking.date}${booking.fromTime}${booking.toTime}").setValue(booking)
     }
+    fun getBooking(): DatabaseReference {
+        return database
+    }
 }

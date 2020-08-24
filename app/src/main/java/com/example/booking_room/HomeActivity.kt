@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.booking_room.fragments.BookingFragment
 import com.example.booking_room.fragments.HomeFragment
+import com.example.booking_room.fragments.ManageBookingFragmentFragment
 import com.example.booking_room.fragments.ManagementFragment
 import com.example.booking_room.services.AuthService
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -29,6 +30,7 @@ class HomeActivity : AppCompatActivity() {
         val homeFragment = HomeFragment()
         val bookingFragment = BookingFragment()
         val managementFragment = ManagementFragment()
+        val manageBookingFragment = ManageBookingFragmentFragment()
 
         bottomSheetDialog.setContentView(view)
 
@@ -39,6 +41,7 @@ class HomeActivity : AppCompatActivity() {
                 R.id.home -> makeCurrentFragment(homeFragment)
                 R.id.booking -> makeCurrentFragment(bookingFragment)
                 R.id.management -> makeCurrentFragment(managementFragment)
+                R.id.managementBooking -> makeCurrentFragment(manageBookingFragment)
                 R.id.account -> bottomSheetDialog.show()
             }
             true
