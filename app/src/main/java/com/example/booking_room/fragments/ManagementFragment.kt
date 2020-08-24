@@ -48,7 +48,6 @@ class ManagementFragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -63,17 +62,15 @@ class ManagementFragment : Fragment() {
         setRoomData()
         seachEditText = v.findViewById(R.id.et_seach)
         seachEditText!!.addTextChangedListener(object :TextWatcher{
-
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
 
+            }
             override fun onTextChanged(ccs: CharSequence?, start: Int, before: Int, count: Int) {
                 search(ccs.toString().toLowerCase())
             }
             override fun afterTextChanged(s: Editable?) {
 
             }
-
         })
         val btnAddRoom = v.findViewById<ImageView>(R.id.add_room)
 
@@ -82,12 +79,8 @@ class ManagementFragment : Fragment() {
 
             dialog.show(requireActivity().supportFragmentManager, "")
         }
-
-
-
         return v
     }
-
     private fun setRoomData() {
         val progress = ProgressDialog(requireContext())
         progress.setTitle("Loading")
@@ -108,8 +101,6 @@ class ManagementFragment : Fragment() {
                     }
                     roomAdapter
                     listView!!.adapter = roomAdapter
-
-
                 }
                 Timer("", false).schedule(500) {
                     progress.dismiss()
@@ -119,14 +110,8 @@ class ManagementFragment : Fragment() {
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-
-
         })
     }
-
-
-
-
     private fun search(data :String){
         databaseReference = RoomService.getInstance().getRoom()
         var query : Query = databaseReference.orderByChild("name").startAt(data).endAt(data+"\uf8ff")
@@ -147,9 +132,6 @@ class ManagementFragment : Fragment() {
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-
-
-
         })
     }
 
