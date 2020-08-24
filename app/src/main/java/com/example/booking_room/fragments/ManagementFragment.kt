@@ -54,7 +54,7 @@ class ManagementFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val v: View = inflater.inflate(R.layout.fragment_management, container, false)
-
+        databaseReference = RoomService.getInstance().getRoom()
         listView = v.findViewById(R.id.list_view)
         arrayList = ArrayList()
         roomAdapter = RoomAdapter(activity?.applicationContext!!, arrayList, R.layout.item_layout, requireActivity().supportFragmentManager)
@@ -87,7 +87,6 @@ class ManagementFragment : Fragment() {
         progress.setMessage("Wait while loading...")
         progress.setCancelable(false)
         progress.show()
-        databaseReference = RoomService.getInstance().getRoom()
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val children = snapshot.children
@@ -113,7 +112,6 @@ class ManagementFragment : Fragment() {
         })
     }
     private fun search(data :String){
-        databaseReference = RoomService.getInstance().getRoom()
         var query : Query = databaseReference.orderByChild("name").startAt(data).endAt(data+"\uf8ff")
         query.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
