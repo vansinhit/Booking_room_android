@@ -2,6 +2,7 @@ package com.example.booking_room.services
 
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -36,4 +37,9 @@ public class AuthService private constructor() {
     fun signOut() {
         auth.signOut()
     }
+    fun ResetPassword(username : String): Task<Void> {
+        return auth.sendPasswordResetEmail(username)
+    }
+
+
 }

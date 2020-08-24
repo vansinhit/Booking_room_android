@@ -3,11 +3,13 @@ package com.example.booking_room
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.booking_room.fragments.BookingFragment
 import com.example.booking_room.fragments.HomeFragment
+import com.example.booking_room.fragments.ManageBookingFragmentFragment
 import com.example.booking_room.fragments.ManagementFragment
 import com.example.booking_room.services.AuthService
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -20,12 +22,15 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+
+
         val bottomSheetDialog = BottomSheetDialog(this)
         val view = layoutInflater.inflate(R.layout.bottom_sheet_layout, null)
 
         val homeFragment = HomeFragment()
         val bookingFragment = BookingFragment()
         val managementFragment = ManagementFragment()
+        val manageBookingFragment = ManageBookingFragmentFragment()
 
         bottomSheetDialog.setContentView(view)
 
@@ -36,6 +41,7 @@ class HomeActivity : AppCompatActivity() {
                 R.id.home -> makeCurrentFragment(homeFragment)
                 R.id.booking -> makeCurrentFragment(bookingFragment)
                 R.id.management -> makeCurrentFragment(managementFragment)
+                R.id.managementBooking -> makeCurrentFragment(manageBookingFragment)
                 R.id.account -> bottomSheetDialog.show()
             }
             true
@@ -49,6 +55,12 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
+        view.change_pasword.setOnClickListener{
+            startActivity(Intent(this, ChagePassword::class.java))
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            finish()
+        }
+
     }
 
     private fun makeCurrentFragment(fragment: Fragment) =

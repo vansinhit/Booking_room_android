@@ -24,7 +24,7 @@
                 android:layout_gravity="center"/>
 
             <EditText
-                android:id="@+id/et_register_email"
+                android:id="@+id/et_seach"
                 android:layout_width="260dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
@@ -33,7 +33,6 @@
                 android:drawableRight="@drawable/ic_search"
                 android:drawablePadding="5dp"
                 android:hint="Sreach"
-                android:inputType="textEmailAddress"
                 android:paddingLeft="20dp"
                 android:paddingRight="15dp" />
 
