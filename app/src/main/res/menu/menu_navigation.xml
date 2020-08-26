@@ -11,15 +11,6 @@
         android:icon="@drawable/ic_library_add"/>
 
     <item
-        android:id="@+id/management"
-        android:title="Management"
-        android:icon="@drawable/ic_apartment"/>
-    <item
-        android:id="@+id/managementBooking"
-        android:title="ManageBooking"
-        android:icon="@drawable/ic_manage_booking"/>
-
-    <item
         android:id="@+id/account"
         android:title="Account"
         android:icon="@drawable/ic_person"/>

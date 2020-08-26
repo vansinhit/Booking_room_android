@@ -46,6 +46,18 @@
         android:inputType="textPassword"
         android:padding="20dp" />
 
+    <TextView
+        android:id="@+id/et_forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="italic"
+        android:text="Forgot password?"
+        android:textSize="16sp"
+        android:textColor="#ea8685" />
+
     <Button
         android:id="@+id/btn_login"
         android:layout_width="300dp"
@@ -58,12 +70,11 @@
         android:textSize="20dp" />
 
     <TextView
-        android:id="@+id/et_forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:text="Forgot password"
+        android:text="OR"
         android:textSize="20dp" />
 
     <Button
@@ -72,10 +83,10 @@
         android:layout_height="60dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:background="@drawable/button"
+        android:background="@drawable/button_register"
         android:text="Register"
         android:textSize="20dp"
-        android:textColor="#fff" />
+        android:textColor="#f3a683" />
 
 </LinearLayout>
 

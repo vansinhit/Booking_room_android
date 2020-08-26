@@ -69,9 +69,9 @@
                 android:layout_width="140dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
+                android:background="@drawable/button_register"
                 android:text="Back"
-                android:textColor="#fff"
+                android:textColor="#f3a683"
                 android:textSize="20dp" />
 
             <Button

@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.booking_room.fragments.BookingFragment
@@ -12,8 +11,8 @@ import com.example.booking_room.fragments.HomeFragment
 import com.example.booking_room.fragments.ManageBookingFragmentFragment
 import com.example.booking_room.fragments.ManagementFragment
 import com.example.booking_room.services.AuthService
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
 
@@ -22,7 +21,8 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-
+        val navigationMenu: BottomNavigationView  = findViewById(R.id.navigation)
+        val navigationMenuAdmin: BottomNavigationView  = findViewById(R.id.navigation_admin)
 
         val bottomSheetDialog = BottomSheetDialog(this)
         val view = layoutInflater.inflate(R.layout.bottom_sheet_layout, null)
@@ -32,14 +32,29 @@ class HomeActivity : AppCompatActivity() {
         val managementFragment = ManagementFragment()
         val manageBookingFragment = ManageBookingFragmentFragment()
 
-        bottomSheetDialog.setContentView(view)
+        if (AuthService.getInstance().getCurrentUser()?.email == "hainguyen27798@gmail.com") {
+            navigationMenu.visibility = View.GONE;
+            navigationMenuAdmin.visibility = View.VISIBLE;
+            makeCurrentFragment(managementFragment)
+        } else {
+            navigationMenu.visibility = View.VISIBLE;
+            navigationMenuAdmin.visibility = View.GONE;
+            makeCurrentFragment(homeFragment)
+        }
 
-        makeCurrentFragment(homeFragment);
+        bottomSheetDialog.setContentView(view)
 
         navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> makeCurrentFragment(homeFragment)
                 R.id.booking -> makeCurrentFragment(bookingFragment)
+                R.id.account -> bottomSheetDialog.show()
+            }
+            true
+        }
+
+        navigation_admin.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
                 R.id.management -> makeCurrentFragment(managementFragment)
                 R.id.managementBooking -> makeCurrentFragment(manageBookingFragment)
                 R.id.account -> bottomSheetDialog.show()

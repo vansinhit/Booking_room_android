@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/management"
+        android:title="Room Management"
+        android:icon="@drawable/ic_apartment"/>
+    <item
+        android:id="@+id/managementBooking"
+        android:title="Booking logger"
+        android:icon="@drawable/ic_manage_booking"/>
+
+    <item
+        android:id="@+id/account"
+        android:title="Account"
+        app:actionViewClass="android.widget.Switch"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_person"/>
+</menu>

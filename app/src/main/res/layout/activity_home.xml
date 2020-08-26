@@ -21,4 +21,15 @@
         app:itemIconTint="@drawable/selector"
         app:menu="@menu/menu_navigation"
         android:layout_alignParentBottom="true"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/navigation_admin"
+        android:background="@color/colorTerraCotta"
+        app:itemBackground="@color/colorTerraCotta"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
+        app:menu="@menu/menu_navigation_admin"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>
