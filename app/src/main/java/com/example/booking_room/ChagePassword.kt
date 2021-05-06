@@ -38,7 +38,7 @@ class ChagePassword : AppCompatActivity() {
 
     }
 
-    fun chagePassword(){
+    fun chagePassword() {
         if (etPasswordOld.text.toString().trim().isEmpty()) {
             etPasswordOld.error = "Please enter password"
             etPasswordOld.requestFocus()
@@ -56,19 +56,29 @@ class ChagePassword : AppCompatActivity() {
             etComfimPassword.requestFocus()
             return
         }
-            val user = AuthService.getInstance().getCurrentUser()
-                val credential = EmailAuthProvider.getCredential(user?.email!!, et_pass_old.text.toString())
-                user?.reauthenticate(credential).addOnCompleteListener {task ->
-                        if (task.isSuccessful) { user?.updatePassword(etNewPassword.text.toString()).addOnCompleteListener{ task ->
-                                    Toast.makeText(this, "Password successfully changed.", Toast.LENGTH_SHORT).show()
-                                    AuthService.getInstance().signOut()
-                                    startActivity(Intent(this, LoginActivity::class.java))
-                                    finish()
-                                }
+        val user = AuthService.getInstance().getCurrentUser() // thông tin của người dùng
+        if (user != null && user.email != null) {
+            val credential = EmailAuthProvider.getCredential(user.email!!, et_pass_old.text.toString()) // nhận thông tin của người dùng
+            user?.reauthenticate(credential)
+                .addOnCompleteListener { task -> // nhắc người dùng cung cấp lại thông tin đăng nhập của họ
+                    if (task.isSuccessful) {
+                        user?.updatePassword(etNewPassword.text.toString())
+                            .addOnCompleteListener { task -> // đặt lại mk người dùng
+                                Toast.makeText(
+                                    this,
+                                    "Password successfully changed.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                AuthService.getInstance().signOut()
+                                startActivity(Intent(this, LoginActivity::class.java))
+                                finish()
+                            }
 
-                        } else {
-                            Toast.makeText(baseContext, task.exception?.message, Toast.LENGTH_LONG).show()
-                        }
+                    } else {
+                        Toast.makeText(baseContext, task.exception?.message, Toast.LENGTH_LONG)
+                            .show()
                     }
+                }
+        }
     }
 }

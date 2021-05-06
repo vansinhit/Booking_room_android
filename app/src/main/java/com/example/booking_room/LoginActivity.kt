@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_reset_password.view.*
 class LoginActivity : AppCompatActivity() {
     lateinit var etEmail: EditText
     lateinit var etPass: EditText
+    lateinit var username: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,12 +33,12 @@ class LoginActivity : AppCompatActivity() {
 
         // Resset password
         et_forgot_password.setOnClickListener {
-            val builder = AlertDialog.Builder(this)
-            val view = layoutInflater.inflate(R.layout.activity_reset_password,null)
-            val username = view.findViewById<EditText>(R.id.et_txt_email)
-            builder.setView(view)
+            val builder = AlertDialog.Builder(this) // tạo ra 1 giá trị  gọi là trình tạo
+            val view = layoutInflater.inflate(R.layout.activity_reset_password,null) // gọi đến view của trang đó
+            username = view.findViewById<EditText>(R.id.et_txt_email)
+            builder.setView(view) // đặt chế độ xem bằng dialog
             view.btn_sent_mail.setOnClickListener{
-                forgotPassword(username)
+                forgotPassword(username) // truyền usernaem dưới dạng tham số. Để ta có thể thực hiện
             }
             view.btn_reset_cancel.setOnClickListener{
                 startActivity(Intent(this, LoginActivity::class.java))
@@ -94,6 +95,8 @@ class LoginActivity : AppCompatActivity() {
 
     private fun forgotPassword(username : EditText){
         if (username.text.toString().isEmpty()) {
+            username.error = "Please enter Email"
+            username.requestFocus()
             return
         }
 
@@ -105,8 +108,6 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this,"Sent Email.", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
-            } else {
-                Toast.makeText(baseContext, task.exception?.message, Toast.LENGTH_LONG).show()
             }
         }
 }
